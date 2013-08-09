@@ -1,7 +1,7 @@
 {
     "name": "a2lix/i18n-doctrine-bundle",
     "type": "symfony-bundle",
-    "description": "",
+    "description": "Manage i18n for your doctrine objects",
     "keywords": ["symfony2", "doctrine2", "i18n", "internationalization", "translation", "translatable"],
     "homepage": "https://github.com/a2lix/I18nDoctrineBundle",
     "license": "MIT",
@@ -18,7 +18,7 @@
         "symfony/symfony": "2.3.*"
     },
     "suggest": {
-        "a2lix/translation-form-bundle": "For your forms",
+        "a2lix/translation-form-bundle": "For your forms"
     },
     "autoload": {
         "psr-0": {"A2lix\\I18nDoctrineBundle": ""}
