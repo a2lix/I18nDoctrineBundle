@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="a2lix_i18n_doctrine.locales" />
+
+        <parameter key="a2lix_i18n_doctrine.listener.doctrine.class" />
+        <parameter key="a2lix_i18n_doctrine.listener.controller.class" />
+    </parameters>
+
+    <services>
+        <service id="a2lix_i18n_doctrine.listener.doctrine" class="%a2lix_i18n_doctrine.listener.doctrine.class%">
+            <tag name="doctrine.event_subscriber" />
+        </service>
+        <service id="a2lix_i18n_doctrine.listener.controller" class="%a2lix_i18n_doctrine.listener.controller.class%">
+            <argument type="service" id="annotation_reader" />
+            <argument type="service" id="a2lix_i18n_doctrine.object_manager" />
+            <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController" />
+        </service>
+    </services>
+</container>
