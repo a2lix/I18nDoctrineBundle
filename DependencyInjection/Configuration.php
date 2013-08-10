@@ -20,14 +20,6 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->arrayNode('locales')
-                    ->beforeNormalization()
-                        ->ifString()
-                        ->then(function($v) { return preg_split('/\s*,\s*/', $v); })
-                    ->end()
-                    ->requiresAtLeastOneElement()
-                    ->prototype('scalar')->end()
-                ->end()
                 ->scalarNode('manager_registry')->defaultValue('doctrine')->end()
 //                ->booleanNode('enable_filters')->defaultTrue()->end()
             ->end()

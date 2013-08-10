@@ -26,7 +26,6 @@ class A2lixI18nDoctrineExtension extends Extension
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');
 
-        $container->setParameter('a2lix_i18n_doctrine.locales', $config['locales']);
         $container->setParameter('a2lix_i18n_doctrine.manager_registry', $config['manager_registry']);
 //        $container->setParameter('a2lix_i18n_doctrine.enable_filters', $config['enable_filters']);
 

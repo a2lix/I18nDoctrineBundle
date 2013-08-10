@@ -5,8 +5,6 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="a2lix_i18n_doctrine.locales" />
-
         <parameter key="a2lix_i18n_doctrine.listener.doctrine.class" />
         <parameter key="a2lix_i18n_doctrine.listener.controller.class" />
     </parameters>
