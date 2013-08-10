@@ -9,10 +9,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table()
  * @ORM\Entity
  */
-class Product implements \A2lix\I18nDoctrineBundle\Doctrine\Interfaces\ManyLocalesInterface
+class Product
 {
-    use \A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\ManyLocales,
-        \A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+    use \A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
     /**
      * @ORM\Column(type="integer")
