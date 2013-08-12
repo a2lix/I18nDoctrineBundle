@@ -32,7 +32,7 @@ trait Translatable
         $this->getTranslations()->removeElement($translation);
     }
 
-    public static function getTranslationClass()
+    public static function getTranslationEntityClass()
     {
         return __CLASS__ . 'Translation';
     }
