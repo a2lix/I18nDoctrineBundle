@@ -17,6 +17,12 @@ class ControllerListener extends BaseControllerListener
         $reflectionClass = new \ReflectionClass($className);
         $reflectionMethod = $reflectionClass->getMethod($method);
 
+        // Sonata
+        if (('Sonata\AdminBundle\Controller\CRUDController' === $className) && in_array($method, array('createAction', 'editAction'))) {
+            $this->om->getFilters()->disable('oneLocale');
+            return;
+        }
+
         if ($this->annotationReader->getMethodAnnotation($reflectionMethod, 'A2lix\I18nDoctrineBundle\Annotation\I18nDoctrine')) {
             $this->om->getFilters()->disable('oneLocale');
 
