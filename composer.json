@@ -8,15 +8,15 @@
     "authors": [
         {
             "name": "A2lix",
-            "homepage": "http://www.a2lix.fr"
+            "homepage": "http://a2lix.fr"
         },
         {
             "name": "David ALLIX"
         }
     ],
     "require": {
-        "symfony/symfony": "2.3.*",
-        "a2lix/translation-form-bundle": "1.*@dev"
+        "symfony/symfony": ">=2.3",
+        "a2lix/translation-form-bundle": "*"
     },
     "autoload": {
         "psr-0": {"A2lix\\I18nDoctrineBundle": ""}
