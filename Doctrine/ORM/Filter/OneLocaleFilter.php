@@ -13,8 +13,11 @@ class OneLocaleFilter extends SQLFilter
         if (!$targetEntity->reflClass->implementsInterface('\A2lix\I18nDoctrineBundle\Doctrine\Interfaces\OneLocaleInterface')) {
             return "";
         }
-
-        return $targetTableAlias .'.locale = '. $this->getParameter('locale');
+        try {
+            return $targetTableAlias .'.locale = '. $this->getParameter('locale');
+        } catch (\InvalidArgumentException $e) {
+            return '';
+        }
     }
 
 }
