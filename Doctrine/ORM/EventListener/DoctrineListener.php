@@ -60,11 +60,13 @@ class DoctrineListener extends BaseDoctrineListener
             return;
         }
 
-        $constraints = array_filter($classMetadata->table['uniqueConstraints'], function($constraint) use ($name) {
-            return $name === $constraint['name'];
-        });
+        foreach ($classMetadata->table['uniqueConstraints'] as $constraintName => $constraint) {
+            if ($name === $constraintName) {
+                return true;
+            }
+        }
 
-        return count($constraints);
+        return false;
     }
 
     public function getSubscribedEvents()
