@@ -15,17 +15,17 @@ class ControllerListener extends BaseControllerListener
 
         $className = ClassUtils::getClass($object);
         $reflectionClass = new \ReflectionClass($className);
-        $reflectionMethod = $reflectionClass->getMethod($method);
-
+ 
         // Sonata
-        if (('Sonata\AdminBundle\Controller\CRUDController' === $className) && in_array($method, array('createAction', 'editAction'))) {
+        $SonataAdmin = 'Sonata\AdminBundle\Controller\CRUDController';
+        if (class_exists($SonataAdmin) && ($SonataAdmin === $className || $reflectionClass->isSubclassOf($SonataAdmin)) && in_array($method, array('createAction', 'editAction'))) {
             $this->om->getFilters()->disable('oneLocale');
             return;
         }
-
+ 
+        $reflectionMethod = $reflectionClass->getMethod($method);
         if ($this->annotationReader->getMethodAnnotation($reflectionMethod, 'A2lix\I18nDoctrineBundle\Annotation\I18nDoctrine')) {
             $this->om->getFilters()->disable('oneLocale');
-
         } else {
             $this->om->getFilters()->enable('oneLocale')->setParameter('locale', $event->getRequest()->getLocale());
         }
