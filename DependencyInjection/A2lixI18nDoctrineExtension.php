@@ -27,7 +27,6 @@ class A2lixI18nDoctrineExtension extends Extension
         $loader->load('services.xml');
 
         $container->setParameter('a2lix_i18n_doctrine.manager_registry', $config['manager_registry']);
-//        $container->setParameter('a2lix_i18n_doctrine.enable_filters', $config['enable_filters']);
 
         // ORM
         if ('doctrine' === $config['manager_registry']) {
