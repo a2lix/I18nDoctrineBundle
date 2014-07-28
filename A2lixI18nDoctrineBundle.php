@@ -14,5 +14,4 @@ class A2lixI18nDoctrineBundle extends Bundle
     {
         parent::build($container);
     }
-
 }
