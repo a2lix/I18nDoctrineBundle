@@ -44,13 +44,17 @@ trait Translatable
 
     public function __call($method, $args)
     {
-        $method = substr($method, 0, 3) === 'get' ? $method : 'get'.ucfirst($method);
+        $method = ('get' === substr($method, 0, 3)) ? $method : 'get'. ucfirst($method);
 
-        return ($translation = $this->getCurrentTranslation()) ?
-                call_user_func(array(
-                    $translation,
-                    $method
-                )) : '';
+        if (!$translation = $this->getCurrentTranslation()) {
+            return;
+        }
+
+        if (method_exists($translation, $method)) {
+            return call_user_func(array($translation, $method));
+        }
+
+        return;
     }
 
 }
