@@ -20,8 +20,24 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('manager_registry')->defaultValue('doctrine')->end()
-//                ->booleanNode('enable_filters')->defaultTrue()->end()
+                ->scalarNode('manager_registry')
+                    ->defaultValue('doctrine')
+                ->end()
+                ->scalarNode('translatableTrait')
+                    ->defaultValue('A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable')
+                ->end()
+                ->scalarNode('translationTrait')
+                    ->defaultValue('A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation')
+                ->end()
+                ->enumNode('translatableFetchMode')
+                    ->values(array('EAGER', 'EXTRA_LAZY', 'LAZY'))
+                    ->defaultValue('LAZY')
+                ->end()
+                ->enumNode('translationFetchMode')
+                    ->values(array('EAGER', 'EXTRA_LAZY', 'LAZY'))
+                    ->defaultValue('LAZY')
+                ->end()
+                ->booleanNode('isRecursive')->defaultTrue()->end()
             ->end()
         ;
 

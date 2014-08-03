@@ -27,6 +27,12 @@ class A2lixI18nDoctrineExtension extends Extension
         $loader->load('services.xml');
 
         $container->setParameter('a2lix_i18n_doctrine.manager_registry', $config['manager_registry']);
+        
+        $container->setParameter('a2lix_i18n_doctrine.translatableTrait', $config['translatableTrait']);
+        $container->setParameter('a2lix_i18n_doctrine.translationTrait', $config['translationTrait']);
+        $container->setParameter('a2lix_i18n_doctrine.translatableFetchMode', $config['translatableFetchMode']);
+        $container->setParameter('a2lix_i18n_doctrine.translationFetchMode', $config['translationFetchMode']);
+        $container->setParameter('a2lix_i18n_doctrine.isRecursive', $config['isRecursive']);
 
         // ORM
         if ('doctrine' === $config['manager_registry']) {

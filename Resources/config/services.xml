@@ -7,10 +7,21 @@
     <parameters>
         <parameter key="a2lix_i18n_doctrine.listener.doctrine.class" />
         <parameter key="a2lix_i18n_doctrine.listener.controller.class" />
+
+        <parameter key="a2lix_i18n_doctrine.translatableTrait" />
+        <parameter key="a2lix_i18n_doctrine.translationTrait" />
+        <parameter key="a2lix_i18n_doctrine.translatableFetchMode" />
+        <parameter key="a2lix_i18n_doctrine.translationFetchMode" />
+        <parameter key="a2lix_i18n_doctrine.isRecursive" />
     </parameters>
 
     <services>
         <service id="a2lix_i18n_doctrine.listener.doctrine" class="%a2lix_i18n_doctrine.listener.doctrine.class%">
+            <argument>%a2lix_i18n_doctrine.translatableTrait%</argument>
+            <argument>%a2lix_i18n_doctrine.translationTrait%</argument>
+            <argument>%a2lix_i18n_doctrine.translatableFetchMode%</argument>
+            <argument>%a2lix_i18n_doctrine.translationFetchMode%</argument>
+            <argument>%a2lix_i18n_doctrine.isRecursive%</argument>
             <tag name="doctrine.event_subscriber" />
         </service>
         <service id="a2lix_i18n_doctrine.listener.controller" class="%a2lix_i18n_doctrine.listener.controller.class%">

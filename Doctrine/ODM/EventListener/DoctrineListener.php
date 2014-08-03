@@ -17,7 +17,7 @@ class DoctrineListener extends BaseDoctrineListener
         }
 
         // Translatable object?
-        if ($this->isTranslatable($classMetadata->reflClass) && !$classMetadata->hasAssociation('translations')) {
+        if ($this->hasTrait($classMetadata->reflClass, $this->translatableTrait, $this->isRecursive) && !$classMetadata->hasAssociation('translations')) {
             $classMetadata->mapManyEmbedded(array(
                 'fieldName' => 'translations',
                 'targetDocument' => $classMetadata->name . 'Translation',
