@@ -55,7 +55,7 @@ class DoctrineListener extends BaseDoctrineListener
 
         // Translatable object?
         if ($this->hasTrait($classMetadata->reflClass, $this->translatableTrait, $this->isRecursive)
-                && !$classMetadata->hasAssociation('translations')) {
+                && !$classMetadata->hasAssociation('translations') && !$classMetadata->reflClass->isAbstract()) {
 
             $classMetadata->mapOneToMany(array(
                 'fieldName' => 'translations',
@@ -69,7 +69,7 @@ class DoctrineListener extends BaseDoctrineListener
 
         // Translation object?
         if ($this->hasTrait($classMetadata->reflClass, $this->translationTrait, $this->isRecursive)
-                && !$classMetadata->hasAssociation('translatable')) {
+                && !$classMetadata->hasAssociation('translatable') && !$classMetadata->reflClass->isAbstract()) {
 
             $classMetadata->mapManyToOne(array(
                 'fieldName' => 'translatable',
