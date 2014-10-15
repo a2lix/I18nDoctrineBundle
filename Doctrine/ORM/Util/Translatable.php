@@ -2,6 +2,8 @@
 
 namespace A2lix\I18nDoctrineBundle\Doctrine\ORM\Util;
 
+use ReflectionClass;
+
 /**
  * Translatable trait.
  *
@@ -34,7 +36,7 @@ trait Translatable
 
     public static function getTranslationEntityClass()
     {
-        return __CLASS__ . 'Translation';
+        return (new ReflectionClass())->getShortName($this) . 'Translation';
     }
 
     public function getCurrentTranslation()
