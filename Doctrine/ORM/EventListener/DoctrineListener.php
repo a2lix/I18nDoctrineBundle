@@ -71,13 +71,19 @@ class DoctrineListener extends BaseDoctrineListener
         if ($this->hasTrait($classMetadata->reflClass, $this->translationTrait, $this->isRecursive)
                 && !$classMetadata->hasAssociation('translatable')) {
 
+            // Custom referencedColumnName identifier
+            $identifier = 'id';
+            if ($classMetadata->reflClass->hasProperty('referencedColumnName')) {
+                $identifier = $classMetadata->reflClass->getStaticPropertyValue('referencedColumnName');
+            }
+
             $classMetadata->mapManyToOne(array(
                 'fieldName' => 'translatable',
                 'inversedBy' => 'translations',
                 'fetch' => $this->translationFetchMode,
                 'joinColumns' => array(array(
                     'name' => 'translatable_id',
-                    'referencedColumnName' => 'id',
+                    'referencedColumnName' => $identifier,
                     'onDelete' => 'CASCADE'
                 )),
                 'targetEntity' => substr($classMetadata->name, 0, -11)
