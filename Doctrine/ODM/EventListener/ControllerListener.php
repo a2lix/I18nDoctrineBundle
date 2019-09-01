@@ -14,13 +14,17 @@ use A2lix\I18nDoctrineBundle\EventListener\ControllerListener as BaseControllerL
 class ControllerListener extends BaseControllerListener
 {
     /**
-     *
      * @param \Symfony\Component\HttpKernel\Event\FilterControllerEvent $event
      */
     public function onKernelController(FilterControllerEvent $event)
     {
         $controller = $event->getController();
-        list($object, $method) = $controller;
+        if (\is_array($controller)) {
+            list($object, $method) = $controller;
+        } else {
+            $object = $controller;
+            $method = '__invoke';
+        }
 
         $className = ClassUtils::getClass($object);
         $reflectionClass = new \ReflectionClass($className);
