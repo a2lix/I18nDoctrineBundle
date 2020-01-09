@@ -1,3 +1,6 @@
+[NOT MAINTAINED ANYMORE] Prefer using https://github.com/KnpLabs/DoctrineBehaviors and re-use the Doctrine Filters feature.
+
+
 A2lixI18nDoctrineBundle
 =======================
 
